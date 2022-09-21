@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+  linux-builder:
+    build:
+      context: .
+    volumes:
+      - .:/opt/distout
+    tty: true
+    stdin_open: true

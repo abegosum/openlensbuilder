@@ -14,4 +14,7 @@ git clone -b ${LATEST_TAG} https://github.com/lensapp/lens.git lens
 
 cd lens
 
-ELECTRON_BUILDER_EXTRA_ARGS='--linux AppImage' make build
+ELECTRON_BUILDER_EXTRA_ARGS='--linux AppImage --linux deb' make build
+
+cp dist/*.AppImage /opt/distout
+cp dist/*.deb /opt/distout
