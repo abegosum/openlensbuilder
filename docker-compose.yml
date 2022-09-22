@@ -1,9 +1,23 @@
 version: '3.4'
 services:
-  linux-builder:
+  deb-linux-builder:
     build:
-      context: .
+      context: ./deb-linux-builder/
+      args:
+        - APP_USER_UID=${APP_USER_UID}
+        - APP_GROUP_GID=${APP_GROUP_GID}
     volumes:
-      - .:/opt/distout
+      - ./distout:/opt/distout
+    tty: true
+    stdin_open: true
+    network_mode: "host"
+  rpm-linux-builder:
+    build:
+      context: ./rpm-linux-builder/
+      args:
+        - APP_USER_UID=${APP_USER_UID}
+        - APP_GROUP_GID=${APP_GROUP_GID}
+    volumes:
+      - ./distout:/opt/distout
     tty: true
     stdin_open: true

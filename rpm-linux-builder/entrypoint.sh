@@ -16,5 +16,4 @@ cd lens
 
 make build
 
-cp dist/*.AppImage /opt/distout
-cp dist/*.deb /opt/distout
+cp dist/*.rpm /opt/distout

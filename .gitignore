@@ -1,3 +1,6 @@
 *.AppImage
 *.deb
 *.rpm
+distout/*.AppImage
+distout/*.deb
+distout/*.rpm
