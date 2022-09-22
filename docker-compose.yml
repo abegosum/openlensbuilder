@@ -21,3 +21,13 @@ services:
       - ./distout:/opt/distout
     tty: true
     stdin_open: true
+  win-builder:
+    build:
+      context: ./win-builder/
+      args:
+        - APP_USER_UID=${APP_USER_UID}
+        - APP_GROUP_GID=${APP_GROUP_GID}
+    volumes:
+      - ./distout:/opt/distout
+    tty: true
+    stdin_open: true
