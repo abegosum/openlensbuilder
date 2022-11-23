@@ -21,6 +21,7 @@ services:
       - ./distout:/opt/distout
     tty: true
     stdin_open: true
+    network_mode: "host"
   win-builder:
     build:
       context: ./win-builder/
@@ -31,3 +32,4 @@ services:
       - ./distout:/opt/distout
     tty: true
     stdin_open: true
+    network_mode: "host"

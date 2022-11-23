@@ -22,6 +22,6 @@ RUN chmod 755 /usr/bin/entrypoint.sh
 
 USER ${BUILD_USER}
 
-ENV ELECTRON_BUILDER_EXTRA_ARGS="--win" 
+ENV ELECTRON_BUILDER_EXTRA_ARGS="--win --dir" 
 
 CMD /usr/bin/entrypoint.sh

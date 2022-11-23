@@ -4,3 +4,4 @@
 distout/*.AppImage
 distout/*.deb
 distout/*.rpm
+distout/*.exe
