@@ -14,7 +14,11 @@ git clone -b ${LATEST_TAG} https://github.com/lensapp/lens.git lens 2>&1
 
 cd lens
 
-make build
+yarn install --check-files --frozen-lockfile --network-timeout=100000
 
-cp dist/*.AppImage /opt/distout
-cp dist/*.deb /opt/distout
+sed -i 's/electron-builder --publish onTag",/electron-builder --publish onTag --linux deb --linux AppImage",/' packages/open-lens/package.json
+
+yarn lerna run build:app
+
+cp packages/open-lens/dist/*.AppImage /opt/distout
+cp packages/open-lens/dist/*.deb /opt/distout

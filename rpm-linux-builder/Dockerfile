@@ -10,7 +10,7 @@ ARG APP_USER_UID=8000
 ARG APP_GROUP_GID=8000
 
 RUN dnf upgrade -y && dnf module install -y nodejs:16 && \
-  dnf install -y gcc gcc-c++ kernel-devel make jq git rpm-build python39 && \
+  dnf install -y gcc gcc-c++ kernel-devel make jq git rpm-build python39 yum && \
   npm install --global yarn corepack && \
   mkdir -p ${BUILD_PATH} && \
   groupadd -g ${APP_GROUP_GID} ${BUILD_GROUP} && \

@@ -14,6 +14,8 @@ git clone -b ${LATEST_TAG} https://github.com/lensapp/lens.git lens 2>&1
 
 cd lens
 
-make build
+sed -i 's/electron-builder --publish onTag",/electron-builder --publish onTag --linux rpm",/' packages/open-lens/package.json
 
-cp dist/*.rpm /opt/distout
+yarn lerna run build:app
+
+cp packages/open-lens/dist/*.rpm /opt/distout

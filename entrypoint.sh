@@ -14,7 +14,9 @@ git clone -b ${LATEST_TAG} https://github.com/lensapp/lens.git lens 2>&1
 
 cd lens
 
-make build
+yarn install --check-files --frozen-lockfile --network-timeout=100000
+
+#make build
 
 cp dist/*.AppImage /opt/distout
 cp dist/*.deb /opt/distout
