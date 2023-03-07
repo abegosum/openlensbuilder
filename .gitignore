@@ -5,3 +5,7 @@ distout/*.AppImage
 distout/*.deb
 distout/*.rpm
 distout/*.exe
+distout/*.dmg
+buildtemp
+node_modules
+yarn.lock
