@@ -51,7 +51,7 @@ OpenLens build process, copy the requlting setup binary (`exe`) to `distout`
 and finish.
 
 ```
-$ docker compose up win-builder2
+$ docker compose up win-builder
 ```
 
 Note: The Windows builder makes a change to the `ensure-binaries` library
