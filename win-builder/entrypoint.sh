@@ -17,12 +17,10 @@ cd lens
 yarn install --check-files --frozen-lockfile --network-timeout=100000
 
 sed -i 's/electron-builder --publish onTag",/electron-builder --publish onTag --win",/' packages/open-lens/package.json
-sed -i 's/forPlatform === "windows"/forPlatform === "windows" || true/' packages/ensure-binaries/src/index.ts
-sed -i 's/normalizedPlatform !== "windows"/false/' packages/ensure-binaries/src/index.ts
-#sed -i 's/\$\{args\.platform\}/windows/g' packages/ensure-binaries/src/index.ts
+#sed -i 's/forPlatform === "windows"/forPlatform === "windows" || true/' packages/ensure-binaries/src/index.ts
+#sed -i 's/normalizedPlatform !== "windows"/false/' packages/ensure-binaries/src/index.ts
+##sed -i 's/\$\{args\.platform\}/windows/g' packages/ensure-binaries/src/index.ts
 sed -i 's/switch (process.platform)/switch ("win32")/' packages/ensure-binaries/src/index.ts
-
-#sed -i 's/ensure-binaries --package .\/package.json --base-dir .\/binaries\/client"/ensure-binaries --package .\/package.json --base-dir .\/binaries\/client --platform windows"/' packages/open-lens/package.json
 
 yarn lerna run build:app
 
