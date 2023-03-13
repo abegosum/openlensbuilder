@@ -14,7 +14,17 @@ git clone -b ${LATEST_TAG} https://github.com/lensapp/lens.git lens 2>&1
 
 cd lens
 
-make build
+yarn install --check-files --frozen-lockfile --network-timeout=100000
 
-ls -la dist/
-cp dist/*.exe /opt/distout
+sed -i 's/electron-builder --publish onTag",/electron-builder --publish onTag --win",/' packages/open-lens/package.json
+sed -i 's/forPlatform === "windows"/forPlatform === "windows" || true/' packages/ensure-binaries/src/index.ts
+sed -i 's/normalizedPlatform !== "windows"/false/' packages/ensure-binaries/src/index.ts
+#sed -i 's/\$\{args\.platform\}/windows/g' packages/ensure-binaries/src/index.ts
+sed -i 's/switch (process.platform)/switch ("win32")/' packages/ensure-binaries/src/index.ts
+
+#sed -i 's/ensure-binaries --package .\/package.json --base-dir .\/binaries\/client"/ensure-binaries --package .\/package.json --base-dir .\/binaries\/client --platform windows"/' packages/open-lens/package.json
+
+yarn lerna run build:app
+
+ls -la packages/open-lens/dist
+cp packages/open-lens/dist/*.exe /opt/distout

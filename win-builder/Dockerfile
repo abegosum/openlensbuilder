@@ -9,7 +9,7 @@ ARG BUILD_GROUP=lensbuilder
 ARG APP_USER_UID=8000
 ARG APP_GROUP_GID=8000
 
-RUN apt-get update ; apt-get install git jq rpm -y && \
+RUN apt-get update ; apt-get install git jq rpm sed -y && \
   mkdir -p ${BUILD_PATH} && \
   groupadd -g ${APP_GROUP_GID} ${BUILD_GROUP} && \
   useradd -l -u ${APP_USER_UID} -g ${BUILD_GROUP} ${BUILD_USER} -d ${BUILD_PATH} && \
