@@ -6,6 +6,10 @@ LATEST_TAG=`curl -sL ${LATEST_RELEASE_INFO_URL} | jq -r ".tag_name"`
 
 echo "Latest OpenLens release is ${LATEST_TAG}"
 
+if [ -d 'buildtemp' ] ; then
+  rm -rf buildtemp
+fi
+
 mkdir buildtemp
 
 cd buildtemp
