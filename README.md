@@ -15,12 +15,16 @@ To build Linux deb, rpm, or AppImages, you'll need to set up Docker with the
 Docker Compose plugin.  Docker can also be used to build a Windows setup
 binary.
 
-To build a Mac OS DMG, you will need to install XCode from the Apple Store onto
-a Mac (building Mac versions is not supported from any operating system but
-MacOS).  Additionally, you'll need all the prerequisites of OpenLens, which are
-(as of the time of writing):
+To build a Mac OS DMG, you will need:
 
 * Homebrew
+* XCode from the Apple Store on a Mac (building Mac versions is not supported 
+  from any operating system but MacOS).
+* `jq`, which can be installed from Homebrew
+
+Additionally, you'll need all the prerequisites of OpenLens, which are
+(as of the time of writing):
+
 * NodeJS 16
 * Yarn
 
@@ -46,7 +50,7 @@ $ docker compose up deb-linux-builder
 ## Building Windows Packages
 
 To build a setup binary for Windows, you can use the `win-builder` service
-defined in the `docker-compose.yml file.  The container should build, run the
+defined in the `docker-compose.yml` file.  The container should build, run the
 OpenLens build process, copy the requlting setup binary (`exe`) to `distout`
 and finish.
 
@@ -57,6 +61,11 @@ $ docker compose up win-builder
 Note: The Windows builder makes a change to the `ensure-binaries` library
 included with the lens source code.  It forces the `ensure-binaries` to assume
 the platform is `win32`, since we're technically building in a Linux container.
+
+## Building Mac DMGs
+
+To build a DMG installer for Mac, make sure you've met the prerequisites listed
+above, then run `mac_build.sh`.
 
 ## Cleanup
 
